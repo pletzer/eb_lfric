@@ -1,0 +1,27 @@
+# Built with EasyBuild version 3.6.1 on 2019-09-29
+easyblock = 'ConfigureMake'
+
+name = 'YAXT'
+version = '0.6.2'
+
+homepage = 'https://www.dkrz.de/redmine/projects/yaxt'
+description = """Successor to Unitrans."""
+
+toolchain = {'name': 'CrayGNU', 'version': '19.04'}
+toolchainopts = {'pic': True, 'usempi': True}
+
+source_urls = ['https://www.dkrz.de/redmine/attachments/download/493/']
+sources = ['yaxt-%(version)s.tar.xz']
+
+preconfigopts = 'SLURM_PARTITION=Debug'
+configopts = '--with-idxtype=long --disable-shared CC=cc FC=ftn MPI_LAUNCH=/opt/slurm/18.08.7/bin/mpiexec'
+
+
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': [],
+}
+
+
+moduleclass = 'lib'
